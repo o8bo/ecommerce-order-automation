@@ -46,11 +46,11 @@ Telegram
 
 ### Database
 
-![Database](screenshots/database.png)
+![Database](screenshots/DB.png)
 
 ### Telegram Notification
 
-![Telegram](screenshots/telegram.png)
+![Telegram](screenshots/Telegram.png)
 
 ## Example
 
