@@ -1,0 +1,362 @@
+{
+  "name": "E-commerce Order Automition",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "ecomerce-order",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "fc5e5806-66e2-433e-a1f6-30a26cd79e10",
+      "name": "Webhook",
+      "webhookId": "0ec19b4b-0b0b-4989-94e7-1c9fddefab48"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "52b3e15c-4fb2-4156-ab61-d0bebd6721c2",
+              "leftValue": "={{ $json.query.order_id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "8bfce2e8-cc0a-4e04-be79-f566cf8b3157",
+              "leftValue": "={{ $json.query.customer_name }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "d4fce267-c3cb-4f1d-bd88-4671638fa874",
+              "leftValue": "={{ $json.query.product }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "d3bf5a04-9685-4eb6-b0e7-0f9473f2eb10",
+              "leftValue": "={{ $json.query.quantity }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "0a4cffb5-7f6a-493c-a094-51c008d555c5",
+              "leftValue": "={{ $json.query.price }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "4beba54f-b215-4e49-a1ae-132ffb34a314",
+              "leftValue": "={{ $json.query.customer_email }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        224,
+        0
+      ],
+      "id": "2ad4c91f-e42e-4714-aa05-0bd5ed6a0e7a",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "69cb7125-73a9-45fd-80d4-6cd9f325d471",
+              "name": "order_id",
+              "value": "={{ $json.query.order_id }}",
+              "type": "string"
+            },
+            {
+              "id": "a1d4b8c2-a4d6-4a1e-96bd-8ff7b8ea74b0",
+              "name": "customer_name",
+              "value": "={{ $json.query.customer_name }}",
+              "type": "string"
+            },
+            {
+              "id": "2f064e3d-b525-493c-bf19-3910a14385d1",
+              "name": "customer_email",
+              "value": "={{ $json.query.customer_email }}",
+              "type": "string"
+            },
+            {
+              "id": "7258102e-3e68-4019-8ed5-4116ff9a747a",
+              "name": "product",
+              "value": "={{ $json.query.product }}",
+              "type": "string"
+            },
+            {
+              "id": "5a28b52e-fa8f-4439-8915-bd4e9a493ca6",
+              "name": "quantity",
+              "value": "={{ $json.query.quantity }}",
+              "type": "string"
+            },
+            {
+              "id": "7c2e3b6a-0e0d-4cf8-a42e-0f2e0e54d646",
+              "name": "price",
+              "value": "={{ $json.query.price }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        464,
+        16
+      ],
+      "id": "a26067c0-14d4-4bd5-b768-ae00a6db6fcb",
+      "name": "filter"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "6f03793c-0fc5-4311-a0e4-20b329a50df8",
+              "name": "order_id",
+              "value": "={{ $json.order_id }}",
+              "type": "string"
+            },
+            {
+              "id": "e8e5fe2e-5ec8-418f-b775-a4395f65712c",
+              "name": "customer_name",
+              "value": "={{ $json.customer_name }}",
+              "type": "string"
+            },
+            {
+              "id": "b641d14d-cac7-4c70-967a-a452e2b8ecdb",
+              "name": "customer_email",
+              "value": "={{ $json.customer_email }}",
+              "type": "string"
+            },
+            {
+              "id": "27d4b3b0-37ac-4c6a-b60f-c5b4b2fd39da",
+              "name": "product",
+              "value": "={{ $json.product }}",
+              "type": "string"
+            },
+            {
+              "id": "3edf5a83-3e0e-4ea5-b5be-31d202f8a1dc",
+              "name": "quantity",
+              "value": "={{ $json.quantity }}",
+              "type": "string"
+            },
+            {
+              "id": "d7ca81d0-b1d3-435a-b406-def17458bed3",
+              "name": "price",
+              "value": "={{ $json.price }}",
+              "type": "string"
+            },
+            {
+              "id": "c0078b4a-97fb-4d4c-a2c5-92084ad70c2c",
+              "name": "total price",
+              "value": "={{ $json.price * $json.quantity }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        704,
+        0
+      ],
+      "id": "ab1ab52d-f09d-4453-83c3-48f6afcbbe70",
+      "name": "calculate total"
+    },
+    {
+      "parameters": {
+        "useCustomSchema": true,
+        "tableId": "E-commerce Order table",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "order_id",
+              "fieldValue": "={{ $json.order_id }}"
+            },
+            {
+              "fieldId": "customer_name",
+              "fieldValue": "={{ $json.customer_name }}"
+            },
+            {
+              "fieldId": "customer_email",
+              "fieldValue": "={{ $json.customer_email }}"
+            },
+            {
+              "fieldId": "product",
+              "fieldValue": "={{ $json.product }}"
+            },
+            {
+              "fieldId": "quantity",
+              "fieldValue": "={{ $json.quantity }}"
+            },
+            {
+              "fieldId": "price",
+              "fieldValue": "={{ $json.price }}"
+            },
+            {
+              "fieldId": "total_price",
+              "fieldValue": "={{ $json[\"total price\"] }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        976,
+        0
+      ],
+      "id": "eff21a02-f04e-4283-abe3-99d2df130c4d",
+      "name": "insert the info to DB",
+      "credentials": {
+        "supabaseApi": {
+          "id": "Supabase id",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "YOUR_CHAT_ID",
+        "text": "=🛒 NEW ORDER\n\n━━━━━━━━━━━━━━━━\n\n📦 ORDER DETAILS\n\nOrder ID: {{ $json.order_id }}\nProduct: {{ $json.product }}\nQuantity: {{ $json.quantity }}\nUnit Price: {{ $json.price }} SAR\nTotal: {{ $json.total_price }} SAR\n\n━━━━━━━━━━━━━━━━\n\n👤 CUSTOMER DETAILS\n\nName: {{ $json.customer_name }}\nEmail: {{ $json.customer_email }}\n\n━━━━━━━━━━━━━━━━\n\n🕐 Order Time: {{ $now.format('yyyy-MM-dd HH:mm') }}\n\n✅ Order received successfully.",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1200,
+        0
+      ],
+      "id": "91307056-a23d-4db9-b675-a2dc4c39245a",
+      "name": "send the order",
+      "webhookId": "0760a537-35a0-43b0-ba4c-9cd048c5be52",
+      "credentials": {
+        "telegramApi": {
+          "id": "Telegram id",
+          "name": "Telegram account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "filter": {
+      "main": [
+        [
+          {
+            "node": "calculate total",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "calculate total": {
+      "main": [
+        [
+          {
+            "node": "insert the info to DB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "insert the info to DB": {
+      "main": [
+        [
+          {
+            "node": "send the order",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "ef3a961b-2fa5-4d45-828a-941dcb0dfbbb",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": ""
+  },
+  "nodeGroups": [],
+  "id": "TAKljbQMlYMDMawf",
+  "tags": []
+}
